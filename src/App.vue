@@ -1,30 +1,49 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <div>
+      <h3>vue-weather</h3>
+    </div>
+    <div cla>
+      <router-link class="nav-link" :to="{ name: 'Home' }">Home</router-link>
+    </div>
+    <div>
+      <router-link class="nav-link" :to="{ name: 'About' }">About</router-link>
+    </div>
   </div>
   <router-view/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'montserrat', sans-serif;
 }
 
 #nav {
-  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 0px;
+  -webkit-box-shadow: 0px 1px 31px 1px rgba(0,0,0,0.16);
+-moz-box-shadow: 0px 1px 31px 1px rgba(0,0,0,0.16);
+box-shadow: 0px 1px 31px 1px rgba(0,0,0,0.16);
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.nav-link {
+  background: #35495e;
+  border-radius: 5px;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.nav-link:hover {
+  background-color: #42b883;
 }
+
+
 </style>
