@@ -3,7 +3,6 @@
     'warm' : ''">
     <main>
 
-
       <div class="search-box">
         <input type="text" 
         class="search-bar" 
@@ -18,7 +17,7 @@
       </div>
 
       <div v-if="loading" style="" class="loaderDiv">
-        <Loader />
+        <Loader class="loader" />
       </div>
 
       <div class="weather-wrap" v-if="(typeof weather.main != 'undefined') && !loading">
@@ -28,17 +27,18 @@
         </div>
 
         <div class="weather-box">
+          
+          <div style="margin-top: 40px;" class="temp">{{ Math.round(weather.main.temp) }}°</div>    
+
+          <div style="margin-top: 40px;" class="weather">{{ weather.weather[0].main }}</div>
+
           <div style="margin-top: 40px;" class="">
             <div class="weather-icon">
               <WeatherIcon :weatherIconCode="weatherIconCode" />              
             </div>                      
             
             <!-- <img :src="'http://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" alt="Something"> -->
-          </div>
-
-          <div class="weather">{{ weather.weather[0].main }}</div>
-
-          <div class="temp">{{ Math.round(weather.main.temp) }}°</div>          
+          </div>      
 
           <div style="color:white; margin: 30px 0px;">
             <p style="text-transform: capitalize">{{ weather_description }}</p>
@@ -46,6 +46,10 @@
           
           <div style="color: white; font-size: 1.2em; margin-top: 1em">
             <p><span style="font-style: italic;">Feels like </span> {{ weather.main.feels_like }}°</p>
+          </div>
+
+          <div style="color: white; font-size: 1.2em; margin-top: 1em;">
+            <p>Humidity: {{ weather.main.humidity }}%</p>
           </div>
         </div>     
 
@@ -89,9 +93,8 @@ export default {
       this.fetchError = true
     },
     setResults(results) {
-      
-      this.weatherIconCode = ''
       this.fetchError = false
+      this.weatherIconCode = ''      
       this.weather = results
       this.weather_description = results.weather[0].description
       this.weatherIconCode = results.weather[0].icon
@@ -234,5 +237,11 @@ main {
   justify-content:center;
   align-items: center;
   margin: 0px auto;
+}
+
+.loader {
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  padding:10px;
 }
 </style>
