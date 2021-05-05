@@ -18,7 +18,7 @@
       </div>
 
       <div v-if="loading" style="" class="loaderDiv">
-        <PulseLoader />
+        <Loader />
       </div>
 
       <div class="weather-wrap" v-if="(typeof weather.main != 'undefined') && !loading">
@@ -57,11 +57,11 @@
 
 <script>
 import WeatherIcon from '../components/WeatherIcon.vue'
-import PulseLoader from 'vue-spinner/src/ScaleLoader'
+import Loader from 'vue-spinner/src/ScaleLoader'
 
 export default {  
   name: "Home",
-  components: { WeatherIcon, PulseLoader },
+  components: { WeatherIcon, Loader },
   data() {
     return {
       api_key: process.env.VUE_APP_OPENWEATHER_API_KEY,
