@@ -1,7 +1,6 @@
 <template>
-   
   <div>
-    <img height="200" :src="image" alt="" srcset="" />
+    <img class="weatherIconBg" height="200" :src="image" alt="" srcset="" />
   </div>
 
   <!-- <div v-if="weather_description == 'few clouds'">
@@ -52,23 +51,44 @@
 
 <script>
 export default {
-    props: ['weatherIconCode'],
-    data() {
-        return {
-            image: require("../assets/weather-icons/" + this.weatherIconCode + ".svg")
-        }
+  props: ["weatherIconCode"],
+  data() {
+    return {
+      image: require("../assets/weather-icons/" +
+        this.weatherIconCode +
+        ".svg"),
+    };
+  },
+  methods: {
+    updateIcon() {
+      this.image = require("../assets/weather-icons/" +
+        this.weatherIconCode +
+        ".svg");
     },
-    // methods: {
-    //     checkIcon() {
-            
-    //     }
-    // },
-    // mounted() {
-    //     this.checkIcon()
-    //     //console.log(this.weatherIconCode)
-    // }
+  },
+  updated() {
+    this.updateIcon();
+  },
+  // methods: {
+  //     checkIcon() {
+
+  //     }
+  // },
+  // mounted() {
+  //     this.checkIcon()
+  //     //console.log(this.weatherIconCode)
+  // }
 };
 </script>
 
 <style>
+.weatherIconBg {
+  display: inline-block;
+  padding: 10px 25px;
+
+  text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 255, 255, 0.25);
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
 </style>
